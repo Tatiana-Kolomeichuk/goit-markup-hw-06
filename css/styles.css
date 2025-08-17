@@ -75,10 +75,10 @@ button {
   box-shadow: 0 1px 6px 0 rgba(46, 47, 66, 0.08),
     0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 2px 1px 0 rgba(46, 47, 66, 0.08);
 }
-.container-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.conteiner-header {
+      display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 .navigation-list,
 .contacts {
@@ -92,14 +92,14 @@ button {
   line-height: 1.17;
   text-transform: uppercase;
   color: #4d5ae5;
-  padding: 16px 0px 16px 16px;
+  padding: 16px 0px;
+  display: block;
 }
 .logo-top-part {
   color: #2e2f42;
 }
 .burger-btn {
   padding: 0;
-  padding-right: 16px;
   border: none;
   background-color: transparent;
 }
@@ -273,12 +273,12 @@ button {
 .mobile-nav-link-studio {
   color: #404bbf;
 }
-
+.mobile-address{ margin-bottom: 48px;}
 .mobile-address-list {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 48px;
+  font-style:normal;
 }
 
 .mobile-address-list-link {
@@ -328,23 +328,25 @@ button {
 /*HERO*/
 .hero {
   background-color: #2e2f42;
-  max-width: 100%;
+  max-width:320px;
   padding: 72px 0;
   background-image: linear-gradient(
       to bottom,
       rgba(46, 47, 66, 0.7),
       rgba(46, 47, 66, 0.7)
     ),
-    image-set(
-      url(/images/people-office.jpg) 1x,
-      url(/images/people-office2x.jpg) 2x
-    );
-
+    url(../images/people-office.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
 }
+@media (min-resolution: 192dpi) {
+    .hero {
+        background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/people-office2x.jpg);
+    }
+}
+
 
 .hero-container {
   display: flex;
@@ -391,6 +393,7 @@ button {
 @media screen and (min-width: 768px) {
   .hero {
     padding: 112px 0;
+    max-width: 768px;
     background-image: linear-gradient(
         to bottom,
         rgba(46, 47, 66, 0.7),
@@ -412,6 +415,7 @@ button {
 @media screen and (min-width: 1158px) {
   .hero {
     padding: 188px 0;
+    max-width: 1468px;
     background-image: linear-gradient(
         to bottom,
         rgba(46, 47, 66, 0.7),
@@ -538,7 +542,7 @@ button {
     0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
 }
 
-.item-text {
+.item-texts {
   padding: 32px 16px;
 }
 
@@ -569,7 +573,8 @@ button {
   justify-content: center;
 }
 .social-list-item {
-  width: calc((100% - 72px) / 3);
+  width:40px;
+  height: 40px;
 }
 
 .social-link {
@@ -599,6 +604,8 @@ button {
     column-gap: 24px;
     justify-content: center;
   }
+  .bottom-container{max-width: 584px;}
+  .bottom-text{max-width:264px;}
 }
 
 @media screen and (min-width: 1158px) {
@@ -637,12 +644,37 @@ button {
   row-gap: 48px;
 }
 .portfolio-list-item {
+  width: 100%;
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.img {
   display: block;
-  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.portfolio .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 40px 32px;
+  width: 100%;
+  height: 100%;
+  background-color: #4d5ae5;
+  color: #f4f4fd;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.portfolio-list-item:hover .text {
+  transform: translateY(0);
 }
 
 .item-text {
@@ -674,9 +706,6 @@ button {
     0 1px 1px 0 rgba(46, 47, 66, 0.16), 0 1px 6px 0 rgba(46, 47, 66, 0.08);
 }
 
-.text {
-  display: none;
-}
 
 @media screen and (min-width: 768px) {
   .portfolio-list {
@@ -711,7 +740,7 @@ button {
     overflow: hidden;
   }
 
-  .text {
+ .portfolio .text {
     position: absolute;
     display: block;
     top: 0;
@@ -730,8 +759,8 @@ button {
     transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .portfolio-list-item:hover .overlay,
-  .portfolio-list-item:focus .overlay {
+  .portfolio-list-item:hover .text,
+  .portfolio-list-item:focus .text {
     opacity: 1;
     transform: translateY(0%);
   }
@@ -1050,7 +1079,7 @@ button {
     position: absolute;
     top: 50%;
     left: 16px;
-    transform: translateY(-50%);
+    transform: translateY(-15%);
     fill: #2e2f42;
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1089,6 +1118,12 @@ button {
     line-height: 117%;
     letter-spacing: 0.04em;
     color: rgba(46, 47, 66, 0.4);
+}
+.privacy-container{
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: #8e8f99;
+
 }
 .privacy-policy {
     margin-bottom: 24px;
@@ -1137,6 +1172,7 @@ button {
 .form-button {
     display: block;
     margin: 0 auto;
+    margin-top: 24px;
     cursor: pointer;
     min-width: 169px;
     height: 56px;
