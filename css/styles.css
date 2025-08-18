@@ -1056,6 +1056,7 @@ button {
 }
 .input-container {
     position: relative;
+    margin-bottom: 8px;
 
 }
 .form-input {
@@ -1155,10 +1156,16 @@ button {
     flex-shrink: 0;
 }
 
-.agreement-check:checked+.user-privacy .custom-check {
-    background-color: #404bbf;
-    border: none;
-    fill: #f4f4fd;
+
+#user-privacy:checked + label .check-img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#user-privacy:checked + label .custom-check {
+  background-color: #404bbf;
+  border: none;
+  fill: #f4f4fd;
 }
 .privacy-policy{
     line-height: 1.33;
