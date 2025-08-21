@@ -119,6 +119,7 @@ button {
   .contacts {
     font-style: normal;
     display: block;
+    align-self: center;
   }
   .navigation-container {
     display: flex;
